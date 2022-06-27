@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block headTitle %}
+login
+{% endblock %}
+
+{% block login %}
+    <li class=" w33 is-active"><a href="{{url_for('home')}}">login</a></li>
+{% endblock %}
+
+
+{% block body %}
+            <div class="my-6"></div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <div class="login-body box center login-alert" >
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                </div>    
+                {% endif %}
+            {% endwith %}
+        
+        <div class="body login-body">
+            <div class="login-box box">
+                <div>
+                    <div class="is-size-3 mb-3 has-text-info">login</div>
+                     <form action="/" method="post">
+
+                    <input name="form" class="input e-input" type="hidden" name='form' value="login">
+                    <div class="ml-5">
+                        <label class="is-size-5" for="usename">username:</label>
+                        <input name="username" class="input e-input" type="text" > 
+                    </div>
+                    <br>
+                    <div class="ml-5">
+                        <label class="is-size-5 "  for="password">password:</label>
+                        <input name="password" class="input e-input" type="password">
+                    </div>
+                    
+                    <br>
+                    <input class="input e-input-button"  type="submit" value="submit">
+                </form>
+                </div>
+
+               
+            </div>
+
+
+
+        <div class="signup-box box">
+            <div>
+                <div class="is-size-3 mb-3 has-text-white">signup</div>
+                <form action="/" method="post">
+        
+                    <input name="form" class="input e-input" type="hidden" value="signup" name="form">
+                    <div class="ml-5">
+                        <label class="is-size-5" for="usename">username:</label>
+                        <input name="username" class="input e-input" type="text">
+                    </div>
+                    <br>
+                    <div class="ml-5">
+                        <label class="is-size-5 " for="password">password:</label>
+                        <input name="password" class="input e-input" type="password">
+                    </div>
+        
+                    <br>
+                    <input class="input e-input-button" type="submit" value="submit">
+                </form>
+            </div>
+        
+        
+        </div>
+        </div>
+            
+{% endblock %}

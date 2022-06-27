@@ -1,0 +1,23 @@
+{% for message in messages %}
+
+
+    {% if message.message == 'cmd: add freind' %}
+    {% elif user == message.sender %}
+            <div class="box is-size-4" style="width:50%; margin-left: 50%; color:wheat; background-color: purple;">
+                <p>{{message.message}}</p>
+                <p class="is-size-5"><small class="is-size-5">{{message.recived_at}}</small></p>
+            </div>
+    {% else %}
+        <div class="box is-size-4" style="width:50%; background-color:blue; color: white;">
+            <p>{{message.message}}</p>
+            <p class="is-size-5"><small class="is-size-5">{{message.recived_at}}</small></p>
+        </div>
+    {% endif %}
+{% endfor %}
+
+{% if command %}
+            <div id="unread" class="box is-size-4" style="width:50%; margin-left: 20%;">
+                unread
+            </div>
+    {{command | safe}}
+{% endif %}

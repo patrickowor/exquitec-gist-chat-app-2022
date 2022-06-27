@@ -1,0 +1,150 @@
+.signup-box{
+    background-color: royalblue;
+    color: white;
+}
+.message-submit-btn{
+    background-color: white;
+    width: 10%;
+    margin-left: 3px ;
+    border-radius: 10px;
+    border-color: skyblue;
+    
+}
+
+div.scroll {
+    overflow-x: hidden;
+    overflow-y: auto;
+    text-align: center;
+    padding: 10px;
+}
+
+.message-submit-btn:hover {
+    background-color: white;
+    width: 10%;
+    margin-left: 3px;
+    border-radius: 10px;
+    border-color: royalblue;
+
+}
+.message-submit{
+    width: 85%;
+    border-radius: 10px;
+    border-color: skyblue;
+}
+#footer-id{
+    position: fixed;
+    bottom: 50px;
+    width: 100%;
+}
+.e-header{
+    position:fixed;
+    z-index: 1;
+    width: 100%;
+    top: 0;
+
+}
+.e-input{
+    border-color: royalblue;
+    border-radius: 7px;
+    width :3100%;
+}
+.e-input-button:hover{
+    background-color: royalblue;
+    color:white;
+}
+.e-input-button{
+    border-color: royalblue;
+    color:royalblue ;
+    border-radius: 7px;
+    width: 300px;
+    padding-left:120px;
+}
+.right {
+    margin: auto;
+    float: right;
+}
+.left {
+    margin: auto;
+    float: left;
+}
+.center {
+    text-align: center;
+}
+
+
+.e-main {
+    width: 100%;
+   display: inline-flex;
+
+}
+.e-w100{
+    width: 100%;
+}
+
+
+.e-sidebar {
+    width: 70%;
+    display: inline-flex;
+}
+.body {
+    margin-top: 20px;
+}
+
+
+
+@media (min-width: 450px) { 
+.e-input-button {
+        margin-left: 10px ;
+        padding-left:120px;
+}
+    .login-alert{
+        margin-right: 23.5%;
+    }
+    .login-box{
+        display: inline-flex;
+        width: 40%;
+    }
+    .signup-box {
+        display: inline-flex;
+        width: 40%;
+    }
+    .login-body{
+            margin-top: 0px !important;
+            margin-left: 20% !important;
+        }
+
+    .send-icon{
+        height: 25px;
+    }
+
+    .e-main{
+        width: 70%;
+    }
+    .e-sidebar{
+        width: 30%;
+    }
+    .body{
+        width : 70%;
+        margin-left: 15%;
+        margin-top: 75px;
+    }
+
+        .spaced-left {
+            width: 40%;
+            margin: auto;
+            float: right;
+        }
+        .spaced {
+            width: 30%;
+        }
+}
+
+
+.up {
+    bottom: 100;
+}
+.w33 {
+    width: 33%;
+    margin: auto;
+}
+

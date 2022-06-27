@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+
+{% block login %}
+<li class=" w33"><a href="{{url_for('home')}}">logout</a></li>
+<li class="w33 is-active"><a href="/chat={{uuid}}">chat</a>
+</li>
+{% endblock %}
+
+
+{% block headTitle %}
+Chat
+{% endblock %}
+
+{% block body %}
+<script>
+    function size(val){
+
+        if(window.innerWidth <= 750 ){
+            var height = window.innerHeight;
+            document.getElementById('scroll').style.height = (height - 200).toString() + 'px';
+
+        } else {
+            var height = window.innerHeight;
+            document.getElementById('scroll').style.height = (height - 200).toString() + 'px';
+            var height = window.innerHeight;
+            document.getElementById('scroll').style.width = '100%';
+            document.getElementById('mainbar').style.height = (height - 120).toString() + 'px';
+        
+        }
+    }
+window.onload = size;
+
+    window.fruuid = '{{fruuid}}';
+</script>
+
+    <div class="body">
+        <section id="sidebar-parent" class="box  e-sidebar ">
+            <div id="sidebar" class="e-w100 ">
+                <h1 class="is-size-3 mx-3">friends</h1>
+                <form action="/add-{{uuid}}/" method="post">
+                    <br>
+                    <input class="input" type="search" name="new" id="new" placeholder="add freind">
+                    <br>
+                </form>
+                <div id="f-scroll" class="scroll" style="text-align: left;">
+                    {% for freind in freinds %}
+                    <a id="freind-list-{{freind.uuid}}" onmousedown="reload('{{freind.uuid}}');" class="box"  hx-get="/read-{{uuid}}/{{freind.uuid}}" hx-target="#scroll" hx-trigger="mouseup" hx-swap="beforeEnd">
+                        <small id="{{unread[freind.username]}}" class="is-size-5 px-3 py-1 mx-3 has-text-white " style="border-radius:25px; background-color: green;">{{unread[freind.username]}}</small>{{freind.username}}
+                    </a>
+                {% endfor %}
+                </div>
+                
+                
+
+            </div>
+        </section>
+        <section id="mainbar" class="e-main right">
+            <div  class="e-w100 box mx-2">
+                <div id="scroll" class="scroll">
+                    
+                </div>
+                <div name="mesaageForm" class="pt-3">
+                    <input id="message-submit" class="input message-submit" type="text" name="message" id="message"><button id= "message-submit-btn" class="message-submit-btn "><img class="send-icon" src="{{url_for('static', filename='send.png')}}" alt="send" ></button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+
+
+    <script>
+        function reload(val) {           
+            window.fruuid = val;
+            var scroll = document.getElementById('scroll')
+            if (scroll.childNodes.length > 0){
+                scroll.textContent = '';
+            }
+
+        }
+        var btn = document.getElementById("message-submit-btn");
+        btn.addEventListener('click', () => {
+            var the_data = "message=" + document.getElementById("message-submit").value+"&"+"reciever=" + window.fruuid;
+        
+            
+            var url= "{{url}}post-{{uuid}}";
+            var request = new XMLHttpRequest()
+            request.open("POST", url, true)
+            request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            request.setRequestHeader("Access-Control-Allow-Origin", '{{url}} ');
+            request.setRequestHeader('Accept-Language','en-GB,en-US;q=0.9,en;q=0.8')
+           
+            request.send(the_data );
+            request.onload = ()=>{
+                console.log(request.response);
+                document.getElementById("message-submit").value = '';
+            }
+            })
+        
+
+
+
+    </script>
+{% endblock %}
